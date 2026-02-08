@@ -4,6 +4,7 @@ import com.gabriela.contracts.contractgenerator.DTO.AddressResponse;
 import com.gabriela.contracts.contractgenerator.service.AddressService;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {
