@@ -56,6 +56,13 @@ A interface do usuário está disponível em:
 
 ---
 
+## Autora:
+Gabriela Pimentel - 
+Desenvolvedora Full Stack - 
+Angular • Spring Boot • TypeScript • Java
+
+---
+
 # 🔹 BACKEND - (English)
 
 ---
@@ -110,4 +117,11 @@ This backend provides endpoints to manage contract templates and generate final 
 
 The user interface is available at:
 👉 https://github.com/gabifp/contract-generator-front
+
+---
+
+## Author:
+Gabriela Pimentel - 
+Full Stack Developer - 
+Angular • Spring Boot • TypeScript • Java
 
