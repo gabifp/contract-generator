@@ -34,14 +34,4 @@ public class ContractTemplateController {
 
         return service.getTemplateById(id);
     }
-
-    @PostMapping("/generate")
-    public String generateContract(@RequestBody ContractGenerateRequest  request) {
-
-        return service.generateContract(
-                request.getTemplateId(),
-                request.getFields()
-        );
-    }
-
 }

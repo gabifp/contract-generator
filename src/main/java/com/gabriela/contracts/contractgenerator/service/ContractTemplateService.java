@@ -1,5 +1,6 @@
 package com.gabriela.contracts.contractgenerator.service;
 
+import com.gabriela.contracts.contractgenerator.DTO.ContractResponse;
 import com.gabriela.contracts.contractgenerator.entity.ContractTemplate;
 import com.gabriela.contracts.contractgenerator.repository.ContractTemplateRepository;
 import org.springframework.stereotype.Service;
@@ -33,18 +34,32 @@ public class ContractTemplateService {
                 .orElseThrow(() -> new RuntimeException("Contract template with id " + id + " not found"));
     }
 
-    public String generateContract(Long templateId, Map<String, String> fields) {
+    public ContractResponse generateContract(Long templateId, Map<String, String> fields) {
         ContractTemplate template = getTemplateById(templateId);
 
-        String content = template.getContent();
+        String generatedContent = applyFields(
+                template.getContent(),
+                fields
+        );
 
-        for (Map.Entry<String, String> entry : fields.entrySet()) {
-            String placeholder = "{{" + entry.getKey() + "}}";
-            String value = entry.getValue();
+        return new ContractResponse(
+                template.getId(),
+                generatedContent
+        );
+    }
 
-            content = content.replace(placeholder, value);
+    private String applyFields(
+            String templateContent,
+            Map<String, String> fields
+    ) {
+        String result = templateContent;
+
+        for(Map.Entry<String, String> entry : fields.entrySet()) {
+            result = result.replace(
+                    "{{" + entry.getKey() + "}}",
+                    entry.getValue());
         }
 
-        return content;
+        return result;
     }
 }
